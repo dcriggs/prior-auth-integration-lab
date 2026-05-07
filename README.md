@@ -22,6 +22,10 @@ npm run typecheck
 npm run build
 ```
 
+## Deployment note
+
+The app pins Next.js to `15.3.6`, the patched 15.3.x release recommended by the official Next.js CVE-2025-66478 advisory. If Vercel or another host reports a vulnerable Next.js version, upgrade within the current release line before deploying.
+
 ## What the app demonstrates
 
 - A dashboard explaining HL7 v2, X12 278, and normalized prior-auth workflow data.
