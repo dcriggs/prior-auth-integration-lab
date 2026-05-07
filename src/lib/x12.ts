@@ -32,6 +32,8 @@ export function parseX12Payload(raw: string): ParsedX12 {
   const dmg = segmentElements(segments, "DMG");
   const trn = segmentElements(segments, "TRN");
   const um = segmentElements(segments, "UM");
+  const hcr = segmentElements(segments, "HCR");
+  const msg = segmentElements(segments, "MSG");
 
   const nm1Segments = segments.filter((segment) => segment.tag === "NM1");
   const payerNm1 = nm1Segments.find((segment) => segment.elements[0] === "PR");
@@ -61,11 +63,11 @@ export function parseX12Payload(raw: string): ParsedX12 {
       npi: providerNm1?.elements[8],
     },
     request: {
-      requestType: um?.[0] === "AR" ? "Admission/service authorization request" : um?.[0],
+      requestType: um?.[0] === "AR" ? "Admission/service authorization request" : um?.[0] ?? "278R response/status",
       serviceDate: normalizeX12Date(um?.[4]),
       diagnosisCodes,
       procedureCodes,
-      status: "Parsed from simplified X12 278 sample",
+      status: hcr?.[0] ? `${hcr[0]} ${hcr[1] ?? ""}`.trim() : msg?.[0] ?? "Parsed from simplified X12 278 sample",
     },
     metadata: {
       transactionId: trn?.[1] ?? bht?.[2] ?? st?.[1],

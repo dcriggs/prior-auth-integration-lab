@@ -12,3 +12,16 @@ export const sampleX12Payload = `ISA*00*          *00*          *ZZ*GOODHEALTH  
 export const failedX12InvalidDate = `ISA*00*          *00*          *ZZ*GOODHEALTH     *ZZ*PAYERPORTAL    *260507*1230*^*00501*000000906*0*T*:~GS*HI*GOODHEALTH*PAYERPORTAL*20260507*1230*906*X*005010X217~ST*278*0002*005010X217~BHT*0007*13*AUTHREQ0002*2026-05-07*1230~HL*1**20*1~NM1*PR*2*ACME HEALTH PLAN*****PI*PAY123~HL*2*1*21*1~NM1*1P*2*GOODHEALTH CLINIC*****XX*1234567893~HL*3*2*22*1~NM1*IL*1*DOE*JACK****MI*MEM222333~DMG*D8*07/14/1985*M~HL*4*3*EV*0~UM*AR*I*1**2026/05/15~SE*13*0002~GE*1*906~IEA*1*000000906~`;
 
 export const failedX12PayerMismatch = sampleX12Payload.replace("PI*PAY123", "PI*UNKNOWN999");
+
+export const sample278ResponsePayload = `ISA*00*          *00*          *ZZ*PAYERPORTAL    *ZZ*GOODHEALTH     *260507*1245*^*00501*000000906*0*T*:~GS*HI*PAYERPORTAL*GOODHEALTH*20260507*1245*906*X*005010X217~ST*278*0003*005010X217~BHT*0007*11*AUTHRESP0001*20260507*1245~HL*1**20*1~NM1*PR*2*ACME HEALTH PLAN*****PI*PAY123~HL*2*1*21*1~NM1*1P*2*GOODHEALTH CLINIC*****XX*1234567893~HL*3*2*22*1~NM1*IL*1*DOE*JANE****MI*MEM987654~HL*4*3*EV*0~TRN*2*PA-2026-0001~HCR*A1*AUTH-APPROVED-123~MSG*Authorization approved for requested imaging service~SE*13*0003~GE*1*906~IEA*1*000000906~`;
+
+export const sample275AttachmentMetadata = {
+  correlationId: "corr-20260507-0001",
+  linked278TransactionId: "PA-2026-0001",
+  attachmentControlNumber: "ATTACH-0001",
+  documentType: "Clinical note and imaging order",
+  contentType: "application/pdf",
+  sha256: "educational-placeholder-hash",
+  transport: "X12_275_OR_SFTP_DEPENDING_ON_PAYER",
+  status: "Ready for payer-required attachment submission",
+};

@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { parseHl7Action, parseX12Action } from "@/app/actions";
 import { debugScenarios } from "@/lib/debugScenarios";
 import { loopMappings } from "@/lib/mapping";
-import { sampleHl7Message, sampleX12Payload } from "@/lib/samples";
+import { sample278ResponsePayload, sampleHl7Message, sampleX12Payload } from "@/lib/samples";
 import type { ParsedHl7, ParsedX12 } from "@/lib/types";
 import { JsonBlock } from "./JsonBlock";
 import { SectionCard } from "./SectionCard";
@@ -56,15 +56,19 @@ export function LabDashboard({ initialHl7, initialX12 }: { initialHl7: ParsedHl7
             Load HL7 sample
           </button>
           <button onClick={() => { setX12Raw(sampleX12Payload); setActiveTab("X12 278 Parser"); }} className="rounded-full bg-indigo-100 px-5 py-3 font-semibold text-indigo-900 shadow-sm">
-            Load X12 278 sample
+            Load X12 278 request
+          </button>
+          <button onClick={() => { setX12Raw(sample278ResponsePayload); setActiveTab("X12 278 Parser"); }} className="rounded-full bg-slate-900 px-5 py-3 font-semibold text-white shadow-sm">
+            Load 278R response
           </button>
         </div>
       </section>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {[
           ["HL7 v2", "Segmented clinical messaging used by EHRs for ADT, orders, results, and operational events."],
-          ["X12 278", "EDI transaction family for health care services review / prior authorization workflows."],
+          ["X12 278R", "EDI request/response data flow for health care services review, prior authorization, and payer status reconciliation."],
+          ["275 attachments", "Supporting documentation workflows that must correlate clinical documents back to the authorization transaction."],
           ["Normalized model", "A stable internal API shape that lets integration logic decouple from source-specific formats."],
         ].map(([title, text]) => (
           <div key={title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">

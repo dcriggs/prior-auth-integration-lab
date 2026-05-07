@@ -34,7 +34,8 @@ npm run build
 - A normalized `PriorAuthRequest` TypeScript model used by both parsers.
 - A validation engine that separates blocking errors from warnings.
 - Debugging scenarios for missing patient identifier, invalid date format, and payer ID mismatch.
-- Documentation and talking-points pages for interview preparation.
+- Documentation, Humata-style integration playbook, and talking-points pages for interview preparation.
+- Role-specific enablement artifacts for 278R response flow, 275 attachments, REST APIs, SFTP, VPN/mTLS, SQL audits, packet tracing, Newman smoke tests, monitoring, and standardized error envelopes.
 
 ## What this app does **not** do
 
@@ -43,6 +44,7 @@ npm run build
 - It does **not** replace payer companion guides or trading-partner certification.
 - It does **not** store PHI, maintain a database, or provide production audit logging.
 - It does **not** submit real authorization requests to payers.
+- It does **not** establish VPN tunnels, perform packet captures, run SQL against a database, or transmit real 275 attachments.
 
 ## Suggested future improvements
 
@@ -54,3 +56,4 @@ npm run build
 - Add payer-specific companion-guide configuration profiles.
 - Add FHIR `Patient`, `Coverage`, `Practitioner`, `Organization`, and `ServiceRequest` mapping examples.
 - Add status response parsing and reconciliation workflows.
+- Add downloadable Postman collections, SQL fixture data, and a Mirth Connect channel export.

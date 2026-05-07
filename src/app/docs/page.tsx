@@ -13,6 +13,22 @@ const checklist = [
   "Positive, negative, edge-case, and payer-specific test cases",
 ];
 
+const authFlowChecklist = [
+  "OAuth2 client credentials: token URL, scopes, audience, expiration, and refresh strategy",
+  "API keys: header name, rotation cadence, environment separation, and emergency revocation process",
+  "mTLS: client certificate owner, CA chain, SAN/CN expectations, expiration monitoring, and renewal runbook",
+  "SFTP: SSH key type, passphrase handling, folder ACLs, file retention, and PGP/encryption expectations",
+];
+
+const monitoringSignals = [
+  "278R request volume by payer and source system",
+  "Schema validation failures and top missing-field categories",
+  "Average payer response time and timeout rate",
+  "SFTP file pickup/acknowledgement latency",
+  "275 attachment rejection or orphaned-document count",
+  "Certificate expiration and VPN tunnel health",
+];
+
 const schemaExample: PriorAuthRequest = {
   sourceType: "X12_278",
   patient: {
@@ -79,6 +95,22 @@ export default function DocumentationPage() {
       <SectionCard title="Requirements-gathering checklist" eyebrow="Discovery">
         <ul className="grid gap-3 md:grid-cols-2">
           {checklist.map((item) => (
+            <li key={item} className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">{item}</li>
+          ))}
+        </ul>
+      </SectionCard>
+
+      <SectionCard title="Authentication and credential documentation" eyebrow="OAuth2, API keys, mTLS, and SFTP">
+        <ul className="grid gap-3 md:grid-cols-2">
+          {authFlowChecklist.map((item) => (
+            <li key={item} className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">{item}</li>
+          ))}
+        </ul>
+      </SectionCard>
+
+      <SectionCard title="Production monitoring signals" eyebrow="Operational readiness">
+        <ul className="grid gap-3 md:grid-cols-2">
+          {monitoringSignals.map((item) => (
             <li key={item} className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">{item}</li>
           ))}
         </ul>

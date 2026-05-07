@@ -42,6 +42,30 @@ const sections = [
     ],
   },
   {
+    title: "278R and 275 workflow ownership",
+    bullets: [
+      "I would describe 278R as both a request and response workflow: submit service-review data, capture payer status/authorization identifiers, and reconcile that result back to the source workflow.",
+      "For 275 attachments, I would focus on correlation IDs, control numbers, document metadata, encryption, acknowledgement handling, and payer-specific attachment rules.",
+      "I would avoid guessing loop requirements and instead validate 2000E, 2010EA, 2010EB, service type codes, and response segments against the implementation and companion guides.",
+    ],
+  },
+  {
+    title: "Security and connectivity",
+    bullets: [
+      "For VPN and mTLS setup, I gather IPs, ports, DNS, certificate chains, cipher expectations, renewal owners, and test windows before implementation starts.",
+      "I troubleshoot connectivity in layers: DNS, route, firewall, VPN tunnel, TCP reachability, TLS handshake, authentication, then application payload.",
+      "I keep PHI out of packet captures and logs unless security policy explicitly permits a controlled diagnostic capture.",
+    ],
+  },
+  {
+    title: "Automation, SQL, and monitoring",
+    bullets: [
+      "I turn implementation examples into Postman/Newman smoke tests and negative fixtures for schema, auth, timeout, duplicate, and payer-routing failures.",
+      "I use SQL audit patterns such as CTEs and window functions to find duplicate transactions, missing required fields, and source-vs-target mismatches.",
+      "I define alert thresholds for volume drops, payer timeouts, validation spikes, SFTP acknowledgement latency, and certificate expiration.",
+    ],
+  },
+  {
     title: "Ramping up on companion guides",
     bullets: [
       "I start with the implementation guide concepts, then compare payer companion-guide deviations loop by loop and qualifier by qualifier.",
